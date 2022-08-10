@@ -2,6 +2,6 @@
 
 int main()
 {
-	printn( "!!!!!!!", "world" );
+	print( "hello" );
 	return 0;
 }
