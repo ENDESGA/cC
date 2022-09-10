@@ -1,1 +1,0 @@
-gcc -w -o alter main.c -Ofast

@@ -7,6 +7,7 @@
 #include <stdnoreturn.h>
 
 #include <string.h>
+#include <math.h>
 #include <ctype.h>
 
 //
@@ -56,3 +57,9 @@ typedef char* _str;
 
 // print string with optional arguments
 #define print( s... ) printf( s )
+
+#define null NULL
+
+#define fn void
+
+#define new( type ) calloc( 1, sizeof( type##_struct ) )
