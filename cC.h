@@ -63,3 +63,4 @@ typedef char* _str;
 #define fn void
 
 #define new( type ) calloc( 1, sizeof( type##_struct ) )
+#define new_n( type, n ) calloc( n, sizeof( type##_struct ) )
