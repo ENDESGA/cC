@@ -386,3 +386,53 @@ typedef char* _String;
 
 #define new( type ) calloc( 1, sizeof( type##_struct ) )
 #define new_n( type, n ) calloc( n, sizeof( type##_struct ) )
+
+//
+
+FN V strrem( char* str, char char_to_remove )
+{
+	I i, j;
+	I len = strlen( str );
+	for( i = 0; i < len; i++ )
+	{
+		if( str[ i ] == char_to_remove )
+		{
+			for( j = i; j < len; j++ )
+			{
+				str[ j ] = str[ j + 1 ];
+			}
+			len--;
+			i--;
+		}
+	}
+}
+
+FN struct timespec time_delta( struct timespec t1, struct timespec t2 )
+{
+	struct timespec td;
+	td.tv_nsec = t2.tv_nsec - t1.tv_nsec;
+	td.tv_sec = t2.tv_sec - t1.tv_sec;
+	if( td.tv_sec > 0 && td.tv_nsec < 0 )
+	{
+		td.tv_nsec += 1e9;
+		td.tv_sec--;
+	} else if( td.tv_sec < 0 && td.tv_nsec > 0 )
+	{
+		td.tv_nsec -= 1e9;
+		td.tv_sec++;
+	}
+	return td;
+}
+
+FN V sleep( U ms )
+{
+		struct timespec ts;
+		I s;
+
+		ts.tv_sec = ms / 1000;
+		ts.tv_nsec = ( ms % 1000 ) * 1000000;
+
+		do {
+			s = nanosleep( &ts, &ts );
+		} while( s );
+}
