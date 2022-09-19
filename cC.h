@@ -384,8 +384,8 @@ typedef char* _String;
 
 #define null NULL
 
-#define new( type ) calloc( 1, sizeof( type##_struct ) )
-#define new_n( type, n ) calloc( n, sizeof( type##_struct ) )
+#define new( type ) calloc( 1, sizeof( type ) )
+#define new_n( type, n ) calloc( n, sizeof( type ) )
 
 //
 
